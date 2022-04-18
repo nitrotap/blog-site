@@ -8,7 +8,6 @@ const seedAll = async () => {
 	console.log('--------------');
 	await seedUsers();
 	console.log('--------------');
-
 	process.exit(0);
 };
 

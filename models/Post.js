@@ -28,6 +28,13 @@ Post.init(
 				model: 'user',
 				key: 'id'
 			}
+		},
+		username: {
+			type: DataTypes.STRING,
+			references: {
+				model: 'user',
+				key: 'username'
+			}
 		}
 	},
 	{

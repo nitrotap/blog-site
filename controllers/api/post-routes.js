@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 		const dbPostData = await Post.findAll({
 			attributes: [
 				'id',
-				'post_url',
+				'contents',
 				'title',
 				'created_at'
 			],
@@ -43,7 +43,7 @@ router.get('/:id', async (req, res) => {
 			},
 			attributes: [
 				'id',
-				'post_url',
+				'contents',
 				'title',
 				'created_at'
 			],
@@ -74,11 +74,11 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', withAuth, async (req, res) => {
-	// expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+	// expects {title: 'Taskmaster goes public!', contents: 'https://taskmaster.com/press', user_id: 1}
 	try {
 		const dbPostData = await Post.create({
 			title: req.body.title,
-			post_url: req.body.post_url,
+			contents: req.body.contents,
 			user_id: req.session.user_id
 		});
 		res.json(dbPostData)
